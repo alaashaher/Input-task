@@ -1,0 +1,10 @@
+<section class="list" id="list">
+    <div class="error" id="error" *ngIf="hasError">Please Enter a Task</div>
+    <div class="header" id="header">
+        <input id="task" type="text" placeholder="Enter a Task" [(ngModel)]="inputValue"/>
+        <button id="add-task" (click)="addTask()"><i class="fa fa-fw fa-plus"></i></button>
+    </div>
+    <div id="body">
+        <ul id="tasks"></ul>
+    </div>
+</section>

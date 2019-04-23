@@ -1,0 +1,115 @@
+$primary: #313e50;
+$grey: #cdcdcd;
+$secondary: #1dd2af;
+$back:#f1f1f1;
+$error:red;
+$main:white;
+
+%transition {
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+}
+
+body {
+  background: $back;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
+.list {
+  max-width: 600px;
+  margin: 0 auto;
+
+  .error {
+    background: $error;
+    color: $main;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+}
+
+ul {
+  background: $main;
+
+  li {
+    &.editMode {
+      input[type=text] {
+        display: inline-block;
+      }
+
+      label {
+        display: none
+      }
+    }
+  }
+}
+
+.header {
+  display: inline-flex;
+  background: $primary;
+  justify-content: space-between;
+  width: 100%;
+
+  input,
+  button {
+    box-sizing: border-box;
+    font-size: 1em;
+    padding: 10px;
+  }
+
+  input {
+    flex-grow: 2;
+  }
+}
+
+.task {
+  display: block;
+  position: relative;
+  padding: 14px 40px 14px 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover>button {
+    opacity: 1;
+  }
+
+  &.completed {
+    color: $grey;
+    text-decoration: line-through;
+  }
+
+  input {
+    margin-right: 10px;
+  }
+
+  input[type="text"] {
+    display: none;
+    font-size: 18px;
+    line-height: 18px;
+    height: 18px;
+    padding: 10px;
+    margin: 0;
+  }
+
+  button {
+    @extend %transition;
+    color: $grey;
+    margin: 0;
+    opacity: 0;
+    float: right;
+    font-size: large;
+
+    &:hover {
+      color: #ed1c24;
+    }
+
+    &.edit {
+      margin-right: 10px;
+    }
+  }
+}
