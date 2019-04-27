@@ -5,8 +5,8 @@
         <button id="add-task" (click)="addTask()"><i class="fa fa-fw fa-plus"></i></button>
     </div>
     <div id="body" *ngIf="ShowList">
-        <ul id="tasks" ngFor="let value of ListValue; let i = index;">
-            <li >
+        <ul id="tasks" *ngFor="let value of ListValue">
+            <li>
                 {{value}}
                 <button class="edit">Edit</button>
                 <button (click)="delete(value)">
