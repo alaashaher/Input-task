@@ -1,10 +1,18 @@
 <section class="list" id="list">
     <div class="error" id="error" *ngIf="hasError">Please Enter a Task</div>
     <div class="header" id="header">
-        <input id="task" type="text" placeholder="Enter a Task" [(ngModel)]="inputValue"/>
+        <input id="task" type="text" placeholder="Enter a Task" [(ngModel)]="inputValue" />
         <button id="add-task" (click)="addTask()"><i class="fa fa-fw fa-plus"></i></button>
     </div>
-    <div id="body">
-        <ul id="tasks"></ul>
+    <div id="body" *ngIf="ShowList">
+        <ul id="tasks" ngFor="let value of ListValue; let i = index;">
+            <li >
+                {{value}}
+                <button class="edit">Edit</button>
+                <button (click)="delete(value)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </li>
+        </ul>
     </div>
 </section>
