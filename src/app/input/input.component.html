@@ -6,10 +6,15 @@
     </div>
     <div id="body" *ngIf="ShowList">
         <ul id="tasks" *ngFor="let value of ListValue">
-            <li>
-                {{value}}
-                <button class="edit">Edit</button>
-                <button (click)="delete(value)">
+            <li class="task {{editModeClass}}">
+                <label class="label" ngbButtonLabel>
+                    <input type="checkbox" ngbButton>
+                    {{value}}
+                </label>
+                <input type="text" [(ngModel)]="value">
+                <button class="edit {{hiddenClass}}"  *ngIf ="editButtonDiv" (click)="editdiv(value)">Edit</button>
+                <button class="edit {{hiddenClass}}" *ngIf ="editButton" (click)="editValue(value)">Edit</button>
+                <button (click)="delete(value)" class="{{hiddenClass}}">
                     <i class="fa fa-trash"></i>
                 </button>
             </li>

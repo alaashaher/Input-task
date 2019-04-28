@@ -8,13 +8,21 @@ import { Component, OnInit } from '@angular/core';
 export class InputComponent implements OnInit {
     hasError: any;
     inputValue: any;
+    value: any;
     ListValue: any;
     ShowList: boolean;
-    // ListValue: any[] = new Array();
+    editModeClass: string;
+    count: any;
+    editButton: boolean;
+    editButtonDiv: boolean;
+    ValueEdit: any;
     constructor(
     ) {
+        this.count = 0;
         this.hasError = false;
         this.ShowList = false;
+        this.editButton = false;
+        this.editButtonDiv = true;
         // this.ListValue = ['alaa'];
         // this.ListValue = [{
         //     id: 1,
@@ -26,6 +34,7 @@ export class InputComponent implements OnInit {
     }
     addValue() {
         this.ListValue.push(this.inputValue);
+        this.inputValue = '';
     }
     addTask() {
         if (!this.inputValue) {
@@ -34,15 +43,28 @@ export class InputComponent implements OnInit {
             this.addValue();
             this.ShowList = true;
             this.hasError = false;
-            console.log(this.ListValue, this.ShowList);
         }
     }
     delete(value) {
-        console.log(value);
         const index = this.ListValue.indexOf(value, 0);
         if (index > -1) {
             this.ListValue.splice(index, 1);
         }
+    }
+    editdiv(value) {
+        this.editModeClass = 'editMode';
+        this.editButton = true;
+        this.editButtonDiv = false;
+        this.ValueEdit = value;
+    }
+
+    editValue(value) {
+        const index = this.ListValue.indexOf(this.ValueEdit, 0);
+        this.ListValue[index] = value;
+        console.log(value);
+        this.editModeClass = 'editMode1';
         console.log(this.ListValue);
+        this.editButton = false;
+        this.editButtonDiv = true;
     }
 }
